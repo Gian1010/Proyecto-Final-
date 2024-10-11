@@ -3,8 +3,6 @@ from django.utils import timezone
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=50, null=False, blank=False)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = 'categoria'
@@ -34,7 +32,7 @@ class Post(models.Model):
     activo = models.BooleanField(default=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.SET_NULL, null=True, default='Sin categoria')
     imagen = models.ImageField(upload_to='media', null=False, blank=False, default='static/img/post_default.jpg')
-    publicado = models.DateTimeField(auto_now_add=True)
+    publicado = models.DateTimeField(default=timezone.now)
     comentario = models.ManyToManyField(Comentario)
 
     class Meta:
@@ -49,7 +47,6 @@ class Post(models.Model):
 
 class Like(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name = 'like'
