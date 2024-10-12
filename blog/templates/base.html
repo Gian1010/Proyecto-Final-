@@ -18,6 +18,20 @@
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
             crossorigin="anonymous"
         />
+        <style>
+            .nav-pills .nav-link {
+                margin: 0 5px; 
+                padding: 10px 20px; 
+            }
+            .nav-pills .nav-link.active {
+                background-color: #007bff; 
+                color: white;
+            }
+            .nav-pills .nav-link.logout {
+                background-color: #dc3545; 
+                color: white;
+            }
+        </style>
     </head>
 
     <body>
@@ -26,43 +40,32 @@
                 <img src="{% static 'img/info.jpg' %}" style="max-width: 300px; margin: 30px;">
             </a>
 
-            <nav class="nav nav-pills flex-column flex-sm-row">
-                <a class="flex-sm-fill text-sm-center nav-link active" href="{% url 'index' %}">Inicio</a>
-                <a class="flex-sm-fill text-sm-center nav-link" href="#">Acerca de nosotros</a>
-                <a class="flex-sm-fill text-sm-center nav-link" href="{% url 'apps.posts:posts' %}">Posts</a>
-                <a class="flex-sm-fill text-sm-center nav-link" href="{% url 'apps.contacto:contacto' %}">Contacto</a>
+            <nav class="nav nav-pills justify-content-center">
+                <a class="flex-sm-fill text-sm-center nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}">Inicio</a>
+                <a class="flex-sm-fill text-sm-center nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">Acerca de nosotros</a>
+                <a class="flex-sm-fill text-sm-center nav-link {% if request.resolver_match.url_name == 'posts' %}active{% endif %}" href="{% url 'apps.posts:posts' %}">Posts</a>
+                <a class="flex-sm-fill text-sm-center nav-link {% if request.resolver_match.url_name == 'contacto' %}active{% endif %}" href="{% url 'apps.contacto:contacto' %}">Contacto</a>
+
                 {% if user.is_authenticated %}
+                    
                     <form method="POST" action="{% url 'apps.usuario:logout' %}" style="display: inline;">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-link nav-link" style="display: inline; padding: 0; border: none; background: none;">Logout</button>
+                        <button type="submit" class="btn btn-link nav-link logout" style="padding: 10px 20px; border: none; background-color: #dc3545; color: white;">Logout</button>
                     </form>
                 {% else %}
-                    <a class="flex-sm-fill text-sm-center nav-link" href="{% url 'apps.usuario:login' %}">Login</a>
+                    
+                    <a class="flex-sm-fill text-sm-center nav-link {% if request.resolver_match.url_name == 'login' %}active{% endif %}" href="{% url 'apps.usuario:login' %}">Login</a>
                 {% endif %}
-                <!-- <a class="flex-sm-fill text-sm-center nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
             </nav>
 
             {% block contenido %}
-
             {% endblock %}
         </header>
         <main></main>
         <footer id="sticky.footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
             <div class="container text-center">
                 <small>Copyright &copy; Your Website</small>
-            </div>    
+            </div>
         </footer>
-        <!-- Bootstrap JavaScript Libraries -->
-        <script
-            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-            crossorigin="anonymous"
-        ></script>
-
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-            crossorigin="anonymous"
-        ></script>
     </body>
 </html>

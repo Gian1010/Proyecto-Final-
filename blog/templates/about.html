@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Acerca de Nosotros{% endblock %}
+
+{% block contenido %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4" style="font-family: 'Arial', sans-serif; font-size: 2.5rem; color: #2c3e50; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);">
+        Acerca de Nosotros
+    </h1>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+                <img src="{% static 'img/imagen1.jpg' %}" class="card-img-top" alt="Miembro del equipo 1">
+                <div class="card-body">
+                    <h5 class="card-title">Niveiro Gianfranco</h5>
+                    <p class="card-text">Rol del Miembro: Backend</p>
+                    <p class="card-text">Breve descripción del miembro del equipo.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <img src="{% static 'path/to/image2.jpg' %}" class="card-img-top" alt="Miembro del equipo 2">
+                <div class="card-body">
+                    <h5 class="card-title">Nombre del Miembro 2</h5>
+                    <p class="card-text">Rol del Miembro 2</p>
+                    <p class="card-text">Breve descripción del miembro del equipo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <img src="{% static 'path/to/image3.jpg' %}" class="card-img-top" alt="Miembro del equipo 3">
+                <div class="card-body">
+                    <h5 class="card-title">Nombre del Miembro 3</h5>
+                    <p class="card-text">Rol del Miembro 3</p>
+                    <p class="card-text">Breve descripción del miembro del equipo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <img src="{% static 'path/to/image4.jpg' %}" class="card-img-top" alt="Miembro del equipo 4">
+                <div class="card-body">
+                    <h5 class="card-title">Nombre del Miembro 4</h5>
+                    <p class="card-text">Rol del Miembro 4</p>
+                    <p class="card-text">Breve descripción del miembro del equipo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

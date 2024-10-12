@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Categoria, Post, Comentario, Like
+from .models import Categoria, Post
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
@@ -10,5 +10,3 @@ class PostAdmin(admin.ModelAdmin):
     list_filter = ('categoria', 'fecha_publicacion')
 
 admin.site.register(Categoria)
-admin.site.register(Comentario)
-admin.site.register(Like)

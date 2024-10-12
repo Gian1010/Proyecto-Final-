@@ -12,6 +12,9 @@
             <div class="card-body">
                 <p><strong>Categoría:</strong> {{ i.categoria }}</p>
                 <p>{{ i.texto }}</p>
+                {% if i.imagen %}
+                    <img src="{{ i.imagen.url }}" class="img-fluid" alt="{{ i.titulo }}">
+                {% endif %}
             </div>
         </div>
     {% empty %}
