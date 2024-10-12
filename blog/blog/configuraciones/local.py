@@ -27,8 +27,17 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+AUTH_USER_MODEL = 'usuario.Usuario'
 # Application definition
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'root@root.com'
+EMAIL_HOST_PASSWORD = 'root'
+
+SITE_NAME = 'Blog'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -40,6 +49,7 @@ INSTALLED_APPS = [
     # Agrega tus aplicaciones aquí
     'apps.posts',
     'apps.contacto',
+    'apps.usuario',
 ]
 
 MIDDLEWARE = [
@@ -78,8 +88,12 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'blogdb',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 

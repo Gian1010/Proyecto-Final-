@@ -31,7 +31,15 @@
                 <a class="flex-sm-fill text-sm-center nav-link" href="#">Acerca de nosotros</a>
                 <a class="flex-sm-fill text-sm-center nav-link" href="{% url 'apps.posts:posts' %}">Posts</a>
                 <a class="flex-sm-fill text-sm-center nav-link" href="{% url 'apps.contacto:contacto' %}">Contacto</a>
-                <a class="flex-sm-fill text-sm-center nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                {% if user.is_authenticated %}
+                    <form method="POST" action="{% url 'apps.usuario:logout' %}" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-link nav-link" style="display: inline; padding: 0; border: none; background: none;">Logout</button>
+                    </form>
+                {% else %}
+                    <a class="flex-sm-fill text-sm-center nav-link" href="{% url 'apps.usuario:login' %}">Login</a>
+                {% endif %}
+                <!-- <a class="flex-sm-fill text-sm-center nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
             </nav>
 
             {% block contenido %}

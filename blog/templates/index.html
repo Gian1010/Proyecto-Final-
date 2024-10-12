@@ -1,5 +1,49 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Página Principal - Tecnología{% endblock %}
 
 {% block contenido %}
-    <h1>Esta es la pagina index</h1>
-{% endblock %} 
+<div class="container" style="margin-top: 50px;">
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Bienvenido a Nuestro Blog de Tecnología</h1>
+        <p class="lead">Explora las últimas tendencias y noticias en el mundo de la tecnología.</p>
+        <hr class="my-4">
+        <p>Descubre artículos, tutoriales y mucho más.</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'apps.posts:posts' %}" role="button">Ver Posts</a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="{% static 'img/tech1.jpg' %}" class="card-img-top" alt="Tecnología 1">
+                <div class="card-body">
+                    <h5 class="card-title">Últimas Noticias</h5>
+                    <p class="card-text">Mantente al día con las últimas noticias en tecnología.</p>
+                    <a href="#" class="btn btn-outline-primary">Leer más</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="{% static 'img/tech2.jpg' %}" class="card-img-top" alt="Tecnología 2">
+                <div class="card-body">
+                    <h5 class="card-title">Tutoriales</h5>
+                    <p class="card-text">Aprende nuevas habilidades con nuestros tutoriales detallados.</p>
+                    <a href="#" class="btn btn-outline-primary">Leer más</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="{% static 'img/tech3.jpg' %}" class="card-img-top" alt="Tecnología 3">
+                <div class="card-body">
+                    <h5 class="card-title">Opiniones</h5>
+                    <p class="card-text">Lee opiniones y análisis de expertos en tecnología.</p>
+                    <a href="#" class="btn btn-outline-primary">Leer más</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
