@@ -3,8 +3,10 @@
 {% block contenido %}
 
 <div class="container" style="margin-top: 50px;">
+    <input type="text" id="search" class="form-control mb-4" placeholder="Buscar posts...">
+    
     {% for i in posts %}
-        <div class="card mb-4">
+        <div class="card mb-4 post">
             <div class="card-header">
                 <h2>{{ i.titulo }}</h2>
                 <h5 class="text-muted">{{ i.subtitulo }}</h5>
@@ -25,5 +27,23 @@
 <div class="container text-center" style="margin-top: 20px;">
     <h1></h1>
 </div>
+
+<script>
+    document.getElementById('search').addEventListener('input', function() {
+        const query = this.value.toLowerCase();
+        const posts = document.querySelectorAll('.post');
+        posts.forEach(post => {
+            const title = post.querySelector('h2').textContent.toLowerCase();
+            const subtitle = post.querySelector('h5').textContent.toLowerCase();
+            const category = post.querySelector('p strong').nextSibling.textContent.toLowerCase();
+            const text = post.querySelector('p').textContent.toLowerCase();
+            if (title.includes(query) || subtitle.includes(query) || category.includes(query) || text.includes(query)) {
+                post.style.display = '';
+            } else {
+                post.style.display = 'none';
+            }
+        });
+    });
+</script>
 
 {% endblock %}
